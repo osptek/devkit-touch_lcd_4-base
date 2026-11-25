@@ -1,62 +1,33 @@
 <p align="left"><img alt="OSPTEK" src="./images/logo.png" width="200" /></p>
 
-<h1 align="center">OSPTEK ESP32-S3-Touch-LCD-4 Touch Panel</h1>
+<h1 align="center">ESP32-S3 Touch LCD 4 · Base</h1>
 
-<p align="center"><b>86-Type Panel · Touch UI · One RS485 Port</b></p>
+<p align="center">A touch panel that connects the interface to field devices.</p>
 
 <p align="center">English | <a href="./README.md">简体中文</a></p>
 
-<p align="center">
-  <img alt="MCU: ESP32-S3" src="https://img.shields.io/badge/MCU-ESP32--S3-E7352C?style=flat-square" />
-  <img alt="Display: 4 inch 480x480" src="https://img.shields.io/badge/Display-4%22_480%C3%97480-3498DB?style=flat-square" />
-  <img alt="Wireless: Wi-Fi Bluetooth" src="https://img.shields.io/badge/Wireless-Wi--Fi_%2B_BLE_5-0A7BBB?style=flat-square" />
-  <img alt="RS485" src="https://img.shields.io/badge/Interface-RS485-F39C12?style=flat-square" />
-  <img alt="Power: USB 5V / 12-24V" src="https://img.shields.io/badge/Power-USB_5V_%2F_12--24_VDC-27AE60?style=flat-square" />
-</p>
+<p align="center"><img alt="OSPTEK ESP32-S3-Touch-LCD-4 product banner" src="./docs/images/banner-v2.png" width="100%" /></p>
 
-<p align="center"><img alt="OSPTEK ESP32-S3-Touch-LCD-4 product image" src="./images/product.png" width="420" /></p>
-
-## Contents
-
-- [Overview](#overview)
-- [Other SKUs in this series](#other-skus-in-this-series)
-- [Features](#features)
-- [Applications](#applications)
-- [Specifications](#specifications)
-- [Display](#display)
-- [Hardware Resources](#hardware-resources)
-- [Quick Start](#quick-start)
-- [Examples](#examples)
-- [Prebuilt Firmware](#prebuilt-firmware)
-- [Repository Structure](#repository-structure)
-- [Documentation](#documentation)
-- [Where to Buy](#where-to-buy)
-- [Support](#support)
-
----
+<p align="center"><sub>Screen UI is a design concept; the running interface depends on the firmware. <a href="./images/product-ui-v2.png">View the product UI preview</a></sub></p>
 
 ## Overview
 
-OSPTEK **ESP32-S3-Touch-LCD-4** is a **4-inch touch panel** based on an ESP32-S3 module (2.4 GHz Wi-Fi + Bluetooth LE 5), with **16 MB Flash** and **8 MB PSRAM**, and an onboard **YDP395BT009-V1** (~3.95") **480×480** RGB capacitive touch display (driver **ST7701S**).
+Base pairs the **ESP32-S3-WROOM-1-N16R8** with a 3.95-inch 480×480 capacitive display, one RS485 port, and I²C expansion. USB Type-C and 12–24 V terminal input support bench development and panel installation; the board also includes IP5306 charge/discharge management. The main board is **ESP32-TPCB4**.
 
-The main board is **ESP32-TPCB4**, with module **ESP32-S3-WROOM-1-N16R8**. It includes one **RS485** port, USB Type-C (power / flash / charge), an I²C sensor header, and a buzzer—suited as a finished product for smart control panels and interactive HMI.
+| At a glance | Configuration |
+| :--- | :--- |
+| **Display** | 3.95 in · 480×480 · ST7701S + FT6336U |
+| **Processor** | ESP32-S3 · 16 MB Flash · 8 MB PSRAM |
+| **Connectivity** | Wi-Fi / BLE 5 · RS485 · I²C |
+| **Power** | USB 5 V or 12–24 VDC terminal input |
 
-## Features
+A fit for projects that need flexible power, a field bus, and local touch control.
 
-- **4" square touch display**: YDP395BT009-V1, 480×480, ST7701S + capacitive touch, ideal for 86-type panel UIs
-- **ESP32-S3 MCU**: Wi-Fi + BLE 5, 16 MB Flash + 8 MB PSRAM
-- **Industrial bus**: onboard RS485 (SP3485EEN + auto direction control) for field devices
-- **Flexible power**: USB Type-C provides 5 V; terminal block supports **12–24 VDC** wide-range input (via DCDC)
-- **Battery management**: IP5306 charge/discharge for battery-powered use
-- **Easy debug**: CH340K USB-UART with auto-download (DTR/RTS control EN / IO0)
-- **Expansion**: I²C sensor port, LCD FPC connector, onboard buzzer, and more
+**Start here**　[Quick Start](#quick-start) · [Examples](#examples) · [Prebuilt Firmware](#prebuilt-firmware)
 
-## Applications
+**Explore**　[Specifications](#specifications) · [Display](#display) · [Hardware Resources](#hardware-resources) · [Documentation](#documentation)
 
-- Smart home central control / 86-type interactive panels
-- Home gateway and local HMI
-- Industrial control and device status displays
-- Smart lighting and building panels
+---
 
 ## Specifications
 
@@ -102,7 +73,8 @@ Summary below; full module parameters, driver, and touch details are in [Display
 
 This panel uses OSPTEK TFT module **YDP395BT009-V1** with driver IC **ST7701S**, connected via the board LCD FPC. Touch is capacitive (I²C, FT6336U).
 
-### Module Specifications (YDP395BT009-V1)
+<details>
+<summary><strong>Full display module specifications · YDP395BT009-V1</strong></summary>
 
 | Item | Specification |
 | ---- | ------------- |
@@ -124,6 +96,8 @@ This panel uses OSPTEK TFT module **YDP395BT009-V1** with driver IC **ST7701S**,
 | Storage temp. | −30 ℃ ~ +80 ℃ |
 
 Touch signals such as `TP_SCL` / `TP_SDA` / `TP_INT` / `TP_RESET` are brought out on the same FPC; typical touch supply is 2.8–3.3 V.
+
+</details>
 
 ### Display Documents
 
@@ -167,22 +141,14 @@ Full PDF:
 
 ## Quick Start
 
-1. Prepare: ESP32-S3-Touch-LCD-4, a data-capable USB cable (not charge-only), and a PC (Windows / Linux / macOS).
-2. Connect USB between the PC and the panel USB port; the power LED should light.
-3. **Verify the display (recommended)**: flash the prebuilt firmware in this repo—see [Prebuilt Firmware](#prebuilt-firmware).
-   - On Windows, use Espressif’s graphical **[Flash Download Tools](https://www.espressif.com/en/support/download/other-tools)**.
-   - Guide: [Flash Download Tool User Guide · ESP32-S3](https://docs.espressif.com/projects/esp-test-tools/en/latest/esp32s3/production_stage/tools/flash_download_tool.html)
-4. **Application development**: build the [example](#examples) with ESP-IDF (auto-download via UART DTR/RTS; see schematic).
+**Check the display first, then choose a development path.** You need the panel, a data-capable USB cable, and a computer.
 
-Hardware details:
+| Goal | What to do |
+| :--- | :--- |
+| See it running | Connect USB and flash the merged image using the address and settings in [Prebuilt Firmware](#prebuilt-firmware). |
+| Build your own app | Pick an [example](#examples), install its matching ESP-IDF version, then build and flash it. |
 
-- [User guide (PDF, Chinese)](./docs/ESP32-S3-Touch-LCD-4_使用指南2025.3.14.pdf)
-
-Espressif tools & getting started:
-
-- [Flash Download Tools (Windows)](https://www.espressif.com/en/support/download/other-tools)
-- [ESP-IDF Get Started · ESP32-S3](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/)
-- [ESP-IDF 快速入门 · ESP32-S3（中文）](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/get-started/)
+On Windows, you can use Espressif's [Flash Download Tools](https://www.espressif.com/en/support/download/other-tools). For wiring and board details, see the [user guide](./docs/ESP32-S3-Touch-LCD-4_使用指南2025.3.14.pdf). Command-line flash steps are in [Prebuilt Firmware](#prebuilt-firmware).
 
 ## Examples
 
@@ -246,7 +212,6 @@ devkit-touch_lcd_4-base/
 ├── firmware/
 └── examples/
 ```
-
 
 ## Documentation
 

@@ -1,61 +1,33 @@
 <p align="left"><img alt="OSPTEK" src="./images/logo.png" width="200" /></p>
 
-<h1 align="center">OSPTEK ESP32-S3-Touch-LCD-4 触摸屏面板</h1>
+<h1 align="center">ESP32-S3 Touch LCD 4 · Base</h1>
 
-<p align="center"><b>86 型面板 · 触摸交互 · 一路 RS485</b></p>
+<p align="center">一块面板，连接触摸交互与现场设备。</p>
 
 <p align="center"><a href="./README_EN.md">English</a> | 简体中文</p>
 
-<p align="center">
-  <img alt="MCU: ESP32-S3" src="https://img.shields.io/badge/MCU-ESP32--S3-E7352C?style=flat-square" />
-  <img alt="Display: 4 inch 480x480" src="https://img.shields.io/badge/Display-4%22_480%C3%97480-3498DB?style=flat-square" />
-  <img alt="Wireless: Wi-Fi Bluetooth" src="https://img.shields.io/badge/Wireless-Wi--Fi_%2B_BLE_5-0A7BBB?style=flat-square" />
-  <img alt="RS485" src="https://img.shields.io/badge/Interface-RS485-F39C12?style=flat-square" />
-  <img alt="Power: USB 5V / 12-24V" src="https://img.shields.io/badge/Power-USB_5V_%2F_12--24_VDC-27AE60?style=flat-square" />
-</p>
+<p align="center"><img alt="OSPTEK ESP32-S3-Touch-LCD-4 产品宣传图" src="./docs/images/banner-v2.png" width="100%" /></p>
 
-<p align="center"><img alt="OSPTEK ESP32-S3-Touch-LCD-4 产品宣传图" src="./images/product.png" width="420" /></p>
+<p align="center"><sub>屏幕界面为视觉设计示意，实际运行界面取决于所烧录的固件。 <a href="./images/product-ui-v2.png">查看产品界面预览</a></sub></p>
 
-## 目录
+## 产品概览
 
-- [产品简介](#产品简介)
-- [产品特性](#产品特性)
-- [应用场景](#应用场景)
-- [规格参数](#规格参数)
-- [屏幕](#屏幕)
-- [硬件资源](#硬件资源)
-- [快速开始](#快速开始)
-- [示例工程](#示例工程)
-- [预编译固件](#预编译固件)
-- [仓库结构](#仓库结构)
-- [相关资料](#相关资料)
-- [购买链接](#购买链接)
-- [技术支持](#技术支持)
+Base 版以 **ESP32-S3-WROOM-1-N16R8** 为核心，配备 3.95 英寸 480×480 电容触摸屏、一路 RS485 和 I²C 接口。USB Type-C 与 12–24 V 端子供电适合桌面调试和面板集成；板载 IP5306 充放电管理。主板型号为 **ESP32-TPCB4**。
+
+| 一眼了解 | 配置 |
+| :--- | :--- |
+| **显示** | 3.95 英寸 · 480×480 · ST7701S + FT6336U |
+| **主控** | ESP32-S3 · 16 MB Flash · 8 MB PSRAM |
+| **通信** | Wi-Fi / BLE 5 · RS485 · I²C |
+| **供电** | USB 5 V 或端子 12–24 VDC |
+
+适合需要灵活供电、现场总线和本地触摸交互的项目。
+
+**从这里开始**　[快速开始](#快速开始) · [示例工程](#示例工程) · [预编译固件](#预编译固件)
+
+**继续了解**　[规格参数](#规格参数) · [屏幕](#屏幕) · [硬件资源](#硬件资源) · [相关资料](#相关资料)
 
 ---
-
-## 产品简介
-
-OSPTEK **ESP32-S3-Touch-LCD-4** 是一款搭载 ESP32-S3（2.4 GHz Wi-Fi + Bluetooth LE 5）模组的 **4 英寸触摸屏面板**，集成 **16 MB Flash** 与 **8 MB PSRAM**，板载 **YDP395BT009-V1**（约 3.95"）**480×480** RGB 电容触摸屏（驱动 **ST7701S**）。
-
-主板型号为 **ESP32-TPCB4**，主控模组为 **ESP32-S3-WROOM-1-N16R8**，板载一路 **RS485**、USB Type-C（供电 / 烧录 / 充电）、I²C 传感器接口与蜂鸣器，适合作为智能中控、交互面板等方案的整机形态产品。
-
-## 产品特性
-
-- **4 寸方屏触摸**：YDP395BT009-V1，480×480，ST7701S + 电容触摸，适合 86 型面板人机界面
-- **ESP32-S3 主控**：Wi-Fi + BLE 5，16 MB Flash + 8 MB PSRAM
-- **工业总线**：板载 RS485（SP3485EEN + 自动收发），便于接入现场设备
-- **供电灵活**：USB Type-C 提供 5 V 主电源；接线端口支持 **12–24 VDC** 宽压输入（经 DCDC 降压）
-- **电池管理**：集成 IP5306 充放电管理，支持电池应用场景
-- **调试方便**：CH340K USB 转串口，支持自动下载（DTR/RTS 控制 EN / IO0）
-- **扩展接口**：I²C 传感器口、LCD FPC 连接器、蜂鸣器等板载外设
-
-## 应用场景
-
-- 智能家居中控 / 86 型交互面板
-- 家庭网关与本地人机界面
-- 工业控制与设备状态显示
-- 智能灯控与楼宇面板
 
 ## 规格参数
 
@@ -101,7 +73,8 @@ OSPTEK **ESP32-S3-Touch-LCD-4** 是一款搭载 ESP32-S3（2.4 GHz Wi-Fi + Bluet
 
 本面板搭载 OSPTEK 自产 TFT 模组 **YDP395BT009-V1**，驱动 IC 为 **ST7701S**，通过主板 LCD FPC 连接；触摸为电容方案（I²C，FT6336U）。
 
-### 模组规格（YDP395BT009-V1）
+<details>
+<summary><strong>查看完整屏幕模组参数 · YDP395BT009-V1</strong></summary>
 
 | 项目 | 规格 |
 | ---- | ---- |
@@ -123,6 +96,8 @@ OSPTEK **ESP32-S3-Touch-LCD-4** 是一款搭载 ESP32-S3（2.4 GHz Wi-Fi + Bluet
 | 存储温度 | −30 ℃ ~ +80 ℃ |
 
 触摸侧经同一 FPC 引出 `TP_SCL` / `TP_SDA` / `TP_INT` / `TP_RESET` 等信号，供电典型 2.8–3.3 V。
+
+</details>
 
 ### 屏幕相关资料
 
@@ -166,22 +141,14 @@ OSPTEK **ESP32-S3-Touch-LCD-4** 是一款搭载 ESP32-S3（2.4 GHz Wi-Fi + Bluet
 
 ## 快速开始
 
-1. 准备：ESP32-S3-Touch-LCD-4、可用的 USB 数据线（需支持数据传输，不仅充电）、电脑（Windows / Linux / macOS）。
-2. 用 USB 连接电脑与面板的 USB 口；电源指示灯应亮起。
-3. **验证显示（推荐）**：直接烧录仓库内预编译固件，见下方 [预编译固件](#预编译固件)。
-   - Windows 可用乐鑫官方图形工具 **[Flash 下载工具](https://www.espressif.com/zh-hans/support/download/other-tools)**（Flash Download Tools）烧录。
-   - 使用说明见：[Flash 下载工具用户指南 · ESP32-S3](https://docs.espressif.com/projects/esp-test-tools/zh_CN/latest/esp32s3/production_stage/tools/flash_download_tool.html)
-4. **二次开发**：使用 ESP-IDF 编译 [示例工程](#示例工程)（自动下载依赖串口 DTR/RTS，详见原理图）。
+**先验证显示，再选择开发路径。** 准备本面板、支持数据传输的 USB 线和电脑。
 
-详细硬件说明见：
+| 目标 | 操作 |
+| :--- | :--- |
+| 先看运行效果 | 用 USB 连接面板，按[预编译固件](#预编译固件)中的地址和参数烧录合并镜像。 |
+| 自行开发 | 选择下方[示例工程](#示例工程)，安装与工程匹配的 ESP-IDF 版本后编译、烧录。 |
 
-- [使用指南（PDF）](./docs/ESP32-S3-Touch-LCD-4_使用指南2025.3.14.pdf)
-
-乐鑫官方工具与入门：
-
-- [Flash 下载工具（Windows）](https://www.espressif.com/zh-hans/support/download/other-tools)
-- [ESP-IDF 快速入门 · ESP32-S3（中文）](https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/get-started/)
-- [ESP-IDF Get Started · ESP32-S3（English）](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/get-started/)
+Windows 用户可使用乐鑫 [Flash 下载工具](https://www.espressif.com/zh-hans/support/download/other-tools)；串口、接线和硬件细节见[使用指南](./docs/ESP32-S3-Touch-LCD-4_使用指南2025.3.14.pdf)。使用命令行的烧录步骤见[预编译固件](#预编译固件)。
 
 ## 示例工程
 
@@ -245,7 +212,6 @@ devkit-touch_lcd_4-base/
 ├── firmware/
 └── examples/
 ```
-
 
 ## 相关资料
 
